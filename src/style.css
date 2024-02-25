@@ -1,0 +1,205 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    overflow: hidden;
+    font-family: 'Lexend', sans-serif;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+
+div.project {
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+div.side {
+    margin: 5px;
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    width: 30%;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    overflow: auto;
+    height: 99vh;
+    width: 30vw;
+}
+
+div.left {
+    background: linear-gradient(to bottom right, rgba(245, 241, 241, 0),  rgba(255, 255, 255, 0.224));
+    direction: rtl;
+    text-align: left;
+}
+
+div.left.hidden {
+    transform: translate(-110%);   
+
+}
+
+div.right {
+    background: linear-gradient(to top left, rgba(245, 241, 241, 0),  rgba(255, 255, 255, 0.224));
+    direction: ltr;
+    text-align: right;
+    right: 0;
+}
+
+div.right.hidden {
+    transform: translate(110%);
+}
+
+div.side > *{
+    width: 90%;
+    margin: 1em;
+    border-radius: 15px;
+}
+
+div.title {
+    z-index: 1;
+    top: 1%;
+    font-size: 4em;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+}
+
+div.title.hidden {
+    transform: translate(-50%, -110%);
+}
+
+
+div.github {
+    background: white; 
+    color: #24292e;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+
+div.github img {
+    height: 30px;
+    width: 30px;
+}
+
+div.github a {
+    text-decoration: none;
+    color: #24292e;
+}
+
+div.github:hover {
+    background: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.224);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.224);
+}
+
+.animate-left {
+    animation: slide-left 1.5s ease-in-out;
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(-110%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.animate-left-back {
+    animation: slide-left-back 1s ease-out;
+}
+
+@keyframes slide-left-back {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-110%);
+    }
+}
+
+.animate-right {
+    animation: slide-right 1.5s ease-in-out;
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(110%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.animate-right-back {
+    animation: slide-right-back 1s ease-out;
+}
+
+@keyframes slide-right-back {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(110%);
+    }
+}
+
+.animate-title{
+    animation: slide-down 1s ease-out;
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translate(-50%, -110%);
+    }
+    100% {
+        transform: translate(-50%, 0%);
+    }
+}
+
+.animate-title-back{
+    animation: slide-up 1s ease-out;
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translate(-50%, 0%);
+    }
+    100% {
+        transform: translate(-50%, -110%);
+    }
+}
