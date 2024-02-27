@@ -2,13 +2,14 @@
 {
     margin: 0;
     padding: 0;
+    user-select: none;
 }
 
 html,
 body
 {
     overflow: hidden;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Mega', sans-serif;
 }
 
 .webgl
@@ -20,9 +21,14 @@ body
 }
 
 
+@font-face {
+    font-family: 'Mega';
+    src: url('/css/megatrans.otf');
+}
+
 div.project {
     color: white;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Mega', sans-serif;
     width: 100%;
     position: absolute;
     z-index: 1;
@@ -41,6 +47,7 @@ div.side {
     overflow: auto;
     height: 99vh;
     width: 30vw;
+    font-family: 'Lexend', sans-serif;
 }
 
 div.left {
@@ -51,7 +58,6 @@ div.left {
 
 div.left.hidden {
     transform: translate(-110%);   
-
 }
 
 div.right {
@@ -67,19 +73,41 @@ div.right.hidden {
 
 div.side > *{
     width: 90%;
-    margin: 1em;
+    margin-top: 5%;
+    direction: ltr;
     border-radius: 15px;
+}
+
+div.side.left > *{
+    border-radius: 15px;
+}
+
+div.side > h3, div.side > p, div.side > h1, div.side > ul, div.side > h2 {
+    background-color: rgba(245, 241, 241, 0.5);
+    color:#24292e;
+    padding: 10px;
+ }
+
+div.side h3 {
+    text-align: center;
+    padding: 10px 0px;
+}
+
+div.side li {
+    margin-left: 10%;
+    font-size: 1.2vw;
 }
 
 div.title {
     z-index: 1;
     top: 1%;
-    font-size: 4em;
+    font-size: 4vw;
     font-weight: bold;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 10px;
+    font-style: italic;
 }
 
 div.title.hidden {
@@ -87,7 +115,7 @@ div.title.hidden {
 }
 
 
-div.github {
+a.github {
     background: white; 
     color: #24292e;
     padding: 10px 0px;
@@ -95,22 +123,49 @@ div.github {
     justify-content: space-around;
     align-items: center;
     cursor: pointer;
+    border: none;
+    text-decoration: none;
 }
 
-div.github img {
+a.github img {
     height: 30px;
     width: 30px;
 }
 
-div.github a {
+a.github:hover {
+    background: rgb(221, 221, 221);
+}
+
+.links {
+    display: flex;
+    color: white;
+    position: absolute;
+    justify-content: right;
+    align-items: right;
+    width: 100%;
+}
+
+.links a {
+    font-size: 1.5vw;
+    margin: 10px;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+    color: white;
     text-decoration: none;
-    color: #24292e;
 }
 
-div.github:hover {
-    background: rgb(255, 255, 255);
+.links a img {
+    height: 5vh;
+    width: 5vh;
 }
 
+.header {
+    position: absolute;
+    font-style: italic;
+    font-size: 3vw;
+    left: 1vw;
+    color: white;
+}
 ::-webkit-scrollbar {
     width: 10px;
 }

@@ -111,7 +111,7 @@ export default class SphereSystem{
                     noise: true,
                     raySize: 0.6
                 }
-            }
+            },
         ]
 
         // Circular array
@@ -145,6 +145,12 @@ export default class SphereSystem{
             wireframe: true,
             visible: false
         })
+        const constructionMaterial = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            wireframe: true,
+            visible: true 
+        })
+
         const boundaryGeometry = new THREE.SphereGeometry(2, 32, 32)
         this.projects.forEach((project) => {
             project.WavySphere = new WavySphere(project.params)
@@ -152,6 +158,9 @@ export default class SphereSystem{
                 boundaryGeometry,
                 boundaryMaterial
             )
+            if(project.params.title === "SpotiFriend" || project.params.title === "LangLM"){
+                project.rayCastSphere.material = constructionMaterial
+            }
             project.rayCastSphere.scale.set(project.params.raySize, project.params.raySize, project.params.raySize)
             project.rayCastSphere.position.set(project.params.position.x, project.params.position.y, project.params.position.z)
             project.rayCastSphere.name = project.params.title
@@ -240,7 +249,8 @@ export default class SphereSystem{
             }
         })
 
-        if(this.time.elapsed % 50 < 0.1){
+        if(this.time.elapsed % 1000 < 10){
+            console.log('update')
             this.projects[4].WavySphere.updateParams({
                 insideColor: this.insideColors[Math.floor(Math.random() * this.insideColors.length)], 
                 outsideColor: this.outsideColors[Math.floor(Math.random() * this.outsideColors.length)]

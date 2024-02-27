@@ -29,7 +29,7 @@ export default class Raycaster extends EventEmitter{
             y: 0
         }
 
-        let isDragging = false;
+        let isDragging = false; // Remove the unused variable
 
         window.addEventListener('mousemove', (e) => {
             this.mouse.x = (e.clientX / this.sizes.width) * 2 -1
@@ -37,14 +37,24 @@ export default class Raycaster extends EventEmitter{
 
         });
 
-        this.experience.canvas.addEventListener('click', () => {
-            this.instance.setFromCamera(this.mouse, this.camera)
-            this.intersects = this.instance.intersectObjects(this.objects, false)
+        this.experience.canvas.addEventListener('mousedown', () => {
+            isDragging = false; // Reset the isDragging flag on mouse down
+        });
 
-            if(this.intersects.length){
-                const name = this.intersects[0].object.name
-                console.log(name)
-                this.trigger('click', [name])
+        this.experience.canvas.addEventListener('mousemove', () => {
+            isDragging = true; // Set the isDragging flag on mouse move
+        });
+
+        this.experience.canvas.addEventListener('mouseup', () => {
+            if (!isDragging) { // Only trigger the click event if not dragging
+                this.instance.setFromCamera(this.mouse, this.camera)
+                this.intersects = this.instance.intersectObjects(this.objects, false)
+
+                if(this.intersects.length){
+                    const name = this.intersects[0].object.name
+                    console.log(name)
+                    this.trigger('click', [name])
+                }
             }
         });
     }
